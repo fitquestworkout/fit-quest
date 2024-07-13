@@ -1,0 +1,112 @@
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+#main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+#top-half {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#daily-streak {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+#workout-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+#workout-options button {
+    font-size: 1em;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#bottom-half {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#character-view {
+    margin: 20px 0;
+}
+
+#progress {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#level-up-progress, #challenge-progress {
+    margin: 5px 0;
+}
+
+#bottom-menu {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background-color: #333;
+    padding: 10px 0;
+}
+
+#bottom-menu button {
+    font-size: 1em;
+    padding: 10px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#setup-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+#setup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#setup-form label {
+    font-size: 1em;
+}
+
+#setup-form input, #setup-form select {
+    font-size: 1em;
+    padding: 5px;
+}
+
+#setup-form button {
+    font-size: 1em;
+    padding: 10px 20px;
+    cursor: pointer;
+}

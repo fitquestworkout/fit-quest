@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fit Quest</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="setup-screen">
+        <h1>Welcome to Fit Quest!</h1>
+        <form id="setup-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="character-type">Character Type:</label>
+            <select id="character-type" name="character-type">
+                <option value="warrior">Warrior</option>
+                <option value="mage">Mage</option>
+                <option value="archer">Archer</option>
+            </select>
+            <label for="exercise-preferences">Exercise Preferences:</label>
+            <input type="checkbox" id="gym" name="exercise-preferences" value="Gym"> Gym
+            <input type="checkbox" id="yoga" name="exercise-preferences" value="Yoga"> Yoga
+            <input type="checkbox" id="run" name="exercise-preferences" value="Run"> Run
+            <input type="checkbox" id="row" name="exercise-preferences" value="Row"> Row
+            <input type="checkbox" id="hiit" name="exercise-preferences" value="HIIT"> HIIT
+            <input type="checkbox" id="prehab" name="exercise-preferences" value="PreHab"> PreHab
+            <button type="submit">Start Quest!</button>
+        </form>
+    </div>
+    <div id="main-content" style="display: none;">
+        <section id="top-half">
+            <div id="daily-streak">Daily Streak: 0</div>
+            <div id="workout-options">
+                <button>Gym</button>
+                <button>Yoga</button>
+                <button>Run</button>
+                <button>Row</button>
+                <button>HIIT</button>
+                <button>PreHab</button>
+            </div>
+        </section>
+        <section id="bottom-half">
+            <div id="character-view">Character View</div>
+            <div id="progress">
+                <div id="level-up-progress">Level-Up Progress: 0%</div>
+                <div id="challenge-progress">Challenge Progress: 0%</div>
+            </div>
+        </section>
+        <div id="profile-management" style="display: none;">
+            <h2>Edit Profile</h2>
+            <form id="profile-form">
+                <label for="edit-name">Name:</label>
+                <input type="text" id="edit-name" name="edit-name" required>
+                <label for="edit-character-type">Character Type:</label>
+                <select id="edit-character-type" name="edit-character-type">
+                    <option value="warrior">Warrior</option>
+                    <option value="mage">Mage</option>
+                    <option value="archer">Archer</option>
+                </select>
+                <label for="edit-exercise-preferences">Exercise Preferences:</label>
+                <input type="checkbox" id="edit-gym" name="edit-exercise-preferences" value="Gym"> Gym
+                <input type="checkbox" id="edit-yoga" name="edit-exercise-preferences" value="Yoga"> Yoga
+                <input type="checkbox" id="edit-run" name="edit-exercise-preferences" value="Run"> Run
+                <input type="checkbox" id="edit-row" name="edit-exercise-preferences" value="Row"> Row
+                <input type="checkbox" id="edit-hiit" name="edit-exercise-preferences" value="HIIT"> HIIT
+                <input type="checkbox" id="edit-prehab" name="edit-exercise-preferences" value="PreHab"> PreHab
+                <button type="submit">Save Changes</button>
+            </form>
+            <button id="logout">Logout</button>
+        </div>
+    </div>
+    <nav id="bottom-menu">
+        <button id="home-tab">Home</button>
+        <button id="character-tab">Character</button>
+        <button id="workout-tab">Workout</button>
+        <button id="stats-tab">Stats</button>
+    </nav>
+    <script src="app.js"></script>
+</body>
+</html>
