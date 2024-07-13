@@ -7,7 +7,16 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="setup-screen">
+    <div id="login-screen">
+        <h1>Fit Quest</h1>
+        <form id="login-form">
+            <label for="login-name">Name:</label>
+            <input type="text" id="login-name" name="login-name" required>
+            <button type="submit">Login</button>
+        </form>
+        <button id="go-to-register">Register</button>
+    </div>
+    <div id="setup-screen" style="display: none;">
         <h1>Welcome to Fit Quest!</h1>
         <form id="setup-form">
             <label for="name">Name:</label>

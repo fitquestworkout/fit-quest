@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const loginScreen = document.getElementById('login-screen');
     const setupScreen = document.getElementById('setup-screen');
     const mainContent = document.getElementById('main-content');
     const profileManagement = document.getElementById('profile-management');
@@ -10,7 +11,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const setupForm = document.getElementById('setup-form');
     const profileForm = document.getElementById('profile-form');
     const logoutButton = document.getElementById('logout');
-    
+    const loginForm = document.getElementById('login-form');
+    const goToRegisterButton = document.getElementById('go-to-register');
+
+    goToRegisterButton.addEventListener('click', () => {
+        loginScreen.style.display = 'none';
+        setupScreen.style.display = 'flex';
+    });
+
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const loginName = document.getElementById('login-name').value;
+        const user = JSON.parse(localStorage.getItem('user'));
+        
+        if (user && user.name === loginName) {
+            loginScreen.style.display = 'none';
+            mainContent.style.display = 'flex';
+            loadUserData();
+        } else {
+            alert('User not found. Please register.');
+        }
+    });
+
     setupForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
@@ -52,17 +74,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     logoutButton.addEventListener('click', () => {
         localStorage.removeItem('user');
-        setupScreen.style.display = 'flex';
+        loginScreen.style.display = 'flex';
         mainContent.style.display = 'none';
         profileManagement.style.display = 'none';
     });
 
     if (localStorage.getItem('user')) {
-        setupScreen.style.display = 'none';
+        loginScreen.style.display = 'none';
         mainContent.style.display = 'flex';
         loadUserData();
     } else {
-        setupScreen.style.display = 'flex';
+        loginScreen.style.display = 'flex';
+        setupScreen.style.display = 'none';
         mainContent.style.display = 'none';
     }
     
