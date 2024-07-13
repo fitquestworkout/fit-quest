@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fit Quest - Character</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #3c3c3c;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px #000;
+        }
+        .main-content {
+            border: 4px solid #fff;
+            background-color: #000;
+            padding: 20px;
+            box-shadow: 0 0 0 4px #000;
+        }
+        .character-display {
+            text-align: center;
+            margin-bottom: 20px;
+            border: 2px solid #fff;
+            padding: 10px;
+        }
+        .stats-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .stat-item {
+            text-align: center;
+            width: 30%;
+        }
+        .upgrade-button {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        .equipment-slot {
+            border: 2px solid #fff;
+            padding: 10px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            border-top: 4px solid #fff;
+            padding-top: 10px;
+            background-color: #3c3c3c;
+        }
+        .menu-item {
+            cursor: pointer;
+            padding: 10px;
+            border: 2px solid #fff;
+            background-color: #000;
+        }
+        .menu-item:hover {
+            background-color: #fff;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>Fit Quest</header>
+        <div class="main-content">
+            <div id="character">
+                <h2>Your Character</h2>
+                <div class="character-display">
+                    <img src="/api/placeholder/64/64" alt="Character" class="pixel-art">
+                    <p>Level: <span id="level">1</span></p>
+                    <p>XP: <span id="xp">0</span></p>
+                </div>
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <h3>Strength</h3>
+                        <p id="strength">10</p>
+                        <button class="upgrade-button" onclick="upgradeStat('strength')">Upgrade (10 XP)</button>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Endurance</h3>
+                        <p id="endurance">10</p>
+                        <button class="upgrade-button" onclick="upgradeStat('endurance')">Upgrade (10 XP)</button>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Flexibility</h3>
+                        <p id="flexibility">10</p>
+                        <button class="upgrade-button" onclick="upgradeStat('flexibility')">Upgrade (10 XP)</button>
+                    </div>
+                </div>
+                <h3>Equipment</h3>
+                <div class="equipment-slot">
+                    <p>Weapon: <span id="weapon">Wooden Sword</span></p>
+                </div>
+                <div class="equipment-slot">
+                    <p>Armor: <span id="armor">Cloth Tunic</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="menu-item" onclick="showSection('dashboard')">Home</div>
+            <div class="menu-item" onclick="showSection('character')">Character</div>
+            <div class="menu-item" onclick="showSection('workout')">Workout</div>
+            <div class="menu-item" onclick="showSection('stats')">Stats</div>
+        </div>
+    </div>
+    <script>
+        // Simulated character data
+        let characterData = {
+            level: 1,
+            xp: 50,
+            strength: 10,
+            endurance: 10,
+            flexibility: 10,
+            weapon: "Wooden Sword",
+            armor: "Cloth Tunic"
+        };
+
+        // Update display
+        function updateDisplay() {
+            document.getElementById('level').textContent = characterData.level;
+            document.getElementById('xp').textContent = characterData.xp;
+            document.getElementById('strength').textContent = characterData.strength;
+            document.getElementById('endurance').textContent = characterData.endurance;
+            document.getElementById('flexibility').textContent = characterData.flexibility;
+            document.getElementById('weapon').textContent = characterData.weapon;
+            document.getElementById('armor').textContent = characterData.armor;
+        }
+
+        // Upgrade stat
+        function upgradeStat(stat) {
+            if (characterData.xp >= 10) {
+                characterData.xp -= 10;
+                characterData[stat] += 1;
+                updateDisplay();
+                alert(`You've upgraded your ${stat} to ${characterData[stat]}!`);
+            } else {
+                alert("Not enough XP to upgrade!");
+            }
+        }
+
+        // Initialize display
+        updateDisplay();
+
+        function showSection(sectionId) {
+            // This function is a placeholder for now
+            // In a full implementation, it would show/hide different sections of the app
+            console.log(`Showing section: ${sectionId}`);
+        }
+    </script>
+</body>
+</html>
