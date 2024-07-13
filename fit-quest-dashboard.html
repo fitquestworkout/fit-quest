@@ -3,173 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fit Quest - Dashboard</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-        body {
-            font-family: 'Press Start 2P', cursive;
-            background-color: #3c3c3c;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header {
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-            text-shadow: 3px 3px #000;
-        }
-        .main-content {
-            border: 4px solid #fff;
-            background-color: #000;
-            padding: 20px;
-            box-shadow: 0 0 0 4px #000;
-        }
-        .character-display {
-            text-align: center;
-            margin-bottom: 20px;
-            border: 2px solid #fff;
-            padding: 10px;
-        }
-        .menu {
-            display: flex;
-            justify-content: space-around;
-            border-top: 4px solid #fff;
-            padding-top: 10px;
-            background-color: #3c3c3c;
-        }
-        .menu-item {
-            cursor: pointer;
-            padding: 10px;
-            border: 2px solid #fff;
-            background-color: #000;
-        }
-        .menu-item:hover {
-            background-color: #fff;
-            color: #000;
-        }
-        h2 {
-            border-bottom: 2px solid #fff;
-            padding-bottom: 10px;
-        }
-        #workout-options {
-            list-style-type: none;
-            padding: 0;
-        }
-        #workout-options li {
-            margin-bottom: 10px;
-            padding: 5px;
-            border: 1px solid #fff;
-            cursor: pointer;
-        }
-        #workout-options li:hover {
-            background-color: #fff;
-            color: #000;
-        }
-        .pixel-art {
-            image-rendering: pixelated;
-            image-rendering: crisp-edges;
-        }
-        .progress-bar {
-            width: 100%;
-            background-color: #3c3c3c;
-            height: 20px;
-            margin-top: 10px;
-        }
-        .progress-bar-fill {
-            height: 100%;
-            background-color: #4CAF50;
-            width: 0%;
-            transition: width 0.5s ease-in-out;
-        }
-    </style>
+    <title>Fit Quest - Retro RPG Fitness</title>
+    <link rel="stylesheet" href="css/pixel-art-css.css">
 </head>
 <body>
     <div class="container">
-        <header>Fit Quest</header>
-        <div class="main-content">
-            <div id="dashboard">
-                <h2>Dashboard</h2>
-                <div class="character-display">
-                    <img src="/api/placeholder/64/64" alt="Character" class="pixel-art">
-                    <p>Level: <span id="level">1</span></p>
-                    <p>XP: <span id="xp">0</span> / <span id="xp-to-next-level">100</span></p>
-                    <div class="progress-bar">
-                        <div class="progress-bar-fill" id="xp-progress"></div>
-                    </div>
-                </div>
-                <p>Current Streak: <span id="streak">0</span> days</p>
-                <h3>Today's Workout Options:</h3>
-                <ul id="workout-options">
-                    <li onclick="selectWorkout('Gym')">Gym</li>
-                    <li onclick="selectWorkout('Yoga')">Yoga</li>
-                    <li onclick="selectWorkout('Run')">Run</li>
-                    <li onclick="selectWorkout('HIIT')">HIIT</li>
-                    <li onclick="selectWorkout('PreHab')">PreHab</li>
-                </ul>
+        <div class="ui-window">
+            <h1 class="ui-title">Fit Quest</h1>
+            <img src="/api/placeholder/64/64" alt="Character" class="character-sprite pixel-art">
+            <p>Level: <span id="level">1</span></p>
+            <p>XP: <span id="xp">0</span> / <span id="xp-to-next-level">100</span></p>
+            <div class="stat-bar">
+                <div class="stat-bar-fill" id="xp-bar"></div>
             </div>
+            <p>Health: 100/100</p>
+            <div class="stat-bar">
+                <div class="stat-bar-fill" style="width: 100%;"></div>
+            </div>
+            <p>Strength: 10</p>
+            <div class="stat-bar">
+                <div class="stat-bar-fill" style="width: 20%;"></div>
+            </div>
+            <p>Endurance: 15</p>
+            <div class="stat-bar">
+                <div class="stat-bar-fill" style="width: 30%;"></div>
+            </div>
+            <button class="pixel-button" onclick="startWorkout()">Start Quest</button>
         </div>
-        <div class="menu">
-            <div class="menu-item" onclick="showSection('dashboard')">Home</div>
-            <div class="menu-item" onclick="showSection('character')">Character</div>
-            <div class="menu-item" onclick="showSection('workout')">Workout</div>
-            <div class="menu-item" onclick="showSection('stats')">Stats</div>
+
+        <div class="ui-window">
+            <h2 class="ui-title">Daily Quests</h2>
+            <ul>
+                <li>Complete a 30-minute workout</li>
+                <li>Reach 10,000 steps</li>
+                <li>Drink 8 glasses of water</li>
+            </ul>
         </div>
     </div>
-    <script>
-        // Simulated user data
-        let userData = {
-            level: 1,
-            xp: 0,
-            xpToNextLevel: 100,
-            streak: 0
-        };
 
-        // Update display
-        function updateDisplay() {
-            document.getElementById('level').textContent = userData.level;
-            document.getElementById('xp').textContent = userData.xp;
-            document.getElementById('xp-to-next-level').textContent = userData.xpToNextLevel;
-            document.getElementById('streak').textContent = userData.streak;
-            
-            // Update XP progress bar
-            const progressPercentage = (userData.xp / userData.xpToNextLevel) * 100;
-            document.getElementById('xp-progress').style.width = `${progressPercentage}%`;
-        }
+    <nav class="menu">
+        <a href="#" class="menu-item">Home</a>
+        <a href="#" class="menu-item">Character</a>
+        <a href="#" class="menu-item">Quests</a>
+        <a href="#" class="menu-item">Stats</a>
+    </nav>
 
-        // Simulate workout selection
-        function selectWorkout(workoutType) {
-            alert(`You've selected ${workoutType} for today's workout!`);
-            // Here you would typically update the user's data on the server
-            // For now, we'll just simulate gaining XP and updating the streak
-            userData.xp += 20;
-            userData.streak += 1;
-            
-            if (userData.xp >= userData.xpToNextLevel) {
-                userData.level += 1;
-                userData.xp -= userData.xpToNextLevel;
-                userData.xpToNextLevel = Math.round(userData.xpToNextLevel * 1.5);
-                alert(`Congratulations! You've reached level ${userData.level}!`);
-            }
-            
-            updateDisplay();
-        }
-
-        // Initialize display
-        updateDisplay();
-
-        function showSection(sectionId) {
-            // This function is a placeholder for now
-            // In a full implementation, it would show/hide different sections of the app
-            console.log(`Showing section: ${sectionId}`);
-        }
-    </script>
+    <script src="js/fit-quest-main.js"></script>
 </body>
 </html>
